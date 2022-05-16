@@ -1,14 +1,14 @@
 import { types } from "../types/types";
 // {
 //    id: new Date().getTime(),
-//       title: 'Cumpleanos de pepe',
-//          start: moment().toDate(),
-//             end: moment().add(2, 'hours').toDate(),
-//                bgcolor: '#FAFAFA',
-//                   notes: 'Comprar pastel',
-//                      user: {
+//    title: 'Cumpleanos de pepe',
+//    start: moment().toDate(),
+//    end: moment().add(2, 'hours').toDate(),
+//    bgcolor: '#FAFAFA',
+//    notes: 'Comprar pastel',
+//    user: {
 //       _id: '123',
-//          name: 'jorge'
+//       name: 'jorge'
 //    }
 // }
 const initialState = {
@@ -40,9 +40,11 @@ export const calendarReducer = (state = initialState, action) => {
       case types.eventDelete:
          return {
             ...state,
-            events: state.events.map((event) => (event.id !== state.activeEvent.id)),
+            events: state.events.filter((event) => (event.id !== state.activeEvent.id)),
             activeEvent: null
          }
+      case types.authClearCalendar:
+         return { ...initialState }
       default:
          return state;
    }

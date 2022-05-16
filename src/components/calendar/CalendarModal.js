@@ -5,7 +5,7 @@ import moment from 'moment'
 import Swal from 'sweetalert2';
 import { useDispatch, useSelector } from 'react-redux';
 import { uiCloseModal } from '../../actions/ui';
-import { eventStartAddNew, ModifyEvent, SetActiveEvent } from '../../actions/events';
+import { eventStartAddNew, startModifyEvent, SetActiveEvent } from '../../actions/events';
 
 const customStyles = {
    content: {
@@ -97,7 +97,7 @@ export const CalendarModal = () => {
       }
       // TODO: Realizar conexiones con base de datos.
       if (activeEvent) {
-         dispatch(ModifyEvent(formValues));
+         dispatch(startModifyEvent(formValues));
       } else {
          dispatch(eventStartAddNew(formValues))
       }

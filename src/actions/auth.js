@@ -72,6 +72,7 @@ export const startLogout = () => {
    return (dispatch) => {
       localStorage.clear();
       dispatch(logout());
+      dispatch(clearCalendar());
    }
 }
 
@@ -86,4 +87,8 @@ const login = (user) => ({
 
 const logout = () => ({
    type: types.authLogout
+})
+
+const clearCalendar = () => ({
+   type: types.authClearCalendar
 })
